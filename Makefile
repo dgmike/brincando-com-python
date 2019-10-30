@@ -17,3 +17,7 @@ install:
 # dump-dependencies - Exporta as dependencias para o arquivo requirements.txt
 dump-dependencies:
 	pip freeze > requirements.txt
+
+# run - Inicializa o servidor em foreground
+run:
+	flask run
