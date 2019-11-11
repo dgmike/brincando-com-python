@@ -24,4 +24,4 @@ run:
 
 # pack - Cria arquivo .tar para uso em instalação
 pack:
-	git archive -v --format=tar --output='flask-app-v$(shell git tag -l | head -n 1).tar' HEAD
+	git archive -v --format=tar --output='flask-app-v$(shell git tag -l --sort="-v:refname" | head -n 1).tar' HEAD
