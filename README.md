@@ -29,11 +29,17 @@ make run
 ## Production mode
 
 ```sh
-. bin/activate
-pip install gunicorn
+yum update -y
+yum install -y make python3 pip3
 amazon-linux-extras install -y nginx1.12
+pip3 install -U virtualenv gunicorn
+/usr/local/bin/virtualenv /app
+cd /app
+# aws s3 cp [address] ./app.tar
+tar -xvf app.tar
+. bin/activate
+cp nginx/conf.d/flaskapp.conf /etc/nginx/conf.d
+cp nginx/nginx.conf /etc/nginx
 gunicorn -u nginx -g nginx -b 0.0.0.0:8080 -D wsgi:app
-cp flaskapp.conf /etc/nginx/conf.d
-## comment /etc/nginx.conf server block
 systemctl restart nginx.service
 ```
