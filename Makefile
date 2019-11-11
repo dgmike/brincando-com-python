@@ -21,3 +21,7 @@ dump-dependencies:
 # run - Inicializa o servidor em foreground
 run:
 	flask run
+
+# pack - Cria arquivo .tar para uso em instalação
+pack:
+	git archive -v --format=tar --output='flask-app-v$(shell git tag -l | head -n 1).tar' HEAD
